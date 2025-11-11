@@ -1,0 +1,39 @@
+.navigation-bar{
+    background-color: #282c34;
+    border-bottom: 1px solid white;
+}
+ 
+Link{
+    text-decoration: none;
+}
+
+
+.nav-logo{
+    height: 40px;
+}
+
+.nav-link{
+    padding: 20px;
+    margin-right:10px;
+    /* width: 100px; */
+    height: 60px;
+    align-items: center;
+    color: #b8e3f5; 
+    font-size: 30px;  
+    background-color: transparent;
+    border: none;
+    border-left: 1px solid white;
+
+}
+
+.first-button{
+    border-left: 0px;
+    border-bottom: 0px;
+}
+
+.nav-link:hover{
+    color: #b8e3f5;
+    text-decoration: underline;
+    text-decoration: bold;
+    cursor: pointer;
+}
