@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import logo from './photos/Maoz-Logo.png';
 import './App.css';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         
-        <h1>Maoz Vaystooch Photography</h1>
+        <h1>מעוז ויסטוך צלם</h1>
       </header>
     </div>
   );
