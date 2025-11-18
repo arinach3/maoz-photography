@@ -1,0 +1,39 @@
+.footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: #b8e3f5;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #282c34;
+    font-weight: bold;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.icon {
+  font-size: 30px;  /* icon size */
+  cursor: pointer;
+  transition: 0.2s;
+  color:#282c34;
+}
+
+.icon:hover {
+  opacity: 0.6;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;  /* small gap between icon and text */
+}
