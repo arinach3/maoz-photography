@@ -7,6 +7,7 @@ import About from './components/About.jsx';
 import MainPortfolio from './components/MainPortfolio.jsx';
 import Footer from "./components/Footer.jsx";
 import Promotional from './components/Promotional.jsx';
+import Contact from './components/Contact.jsx';
 <html lang="he" dir="rtl"></html>
 
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/MainPortfolio" element={<MainPortfolio />} />
           <Route path="/Promotional" element={<Promotional />} />
+          <Route path="/ContactUs" element={<Contact />} />
         </Routes>
       </Router>
       <Footer />

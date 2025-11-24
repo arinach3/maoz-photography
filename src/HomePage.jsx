@@ -1,7 +1,8 @@
 import React from 'react';
 import logo from './photos/Maoz-Logo.png';
-import photo1 from "./photos/MzV-01672.jpg"
+import photo3 from "./photos/family8.jpg"
 import photo2 from "./photos/MzV-09359.jpg";
+import photo1 from "./photos/balerina.jpg";
 import './App.css';
 import './HomePage.css';
 import { useState, useEffect } from "react";
@@ -10,7 +11,8 @@ import { useState, useEffect } from "react";
 export default function HomePage(){
   const images = [
     photo1,
-    photo2
+    photo2,
+    photo3
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
