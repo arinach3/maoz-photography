@@ -9,8 +9,8 @@ export default function NavBar(){
         <nav class="navigation-bar">
             <div>
                 <Link to="/"><button class="nav-link first-button"><img src={logo} className="nav-logo" alt="logo" /></button></Link>
-                <Link to="/about"><button class="nav-link">אודות</button></Link>
-                <Link to="/promotional"><button class="nav-link">העבודות שלי</button></Link>
+                <Link to="/About"><button class="nav-link">קצת עלי</button></Link>
+                <Link to="/MainPortfolio"><button class="nav-link">העבודות שלי</button></Link>
             </div>
         </nav>
     )

@@ -6,6 +6,7 @@ import HomePage from './HomePage.jsx';
 import About from './components/About.jsx';
 import MainPortfolio from './components/MainPortfolio.jsx';
 import Footer from "./components/Footer.jsx";
+import Promotional from './components/Promotional.jsx';
 <html lang="he" dir="rtl"></html>
 
 
@@ -16,8 +17,9 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/promotional" element={<MainPortfolio />} />
+          <Route path="/About" element={<About />} />
+          <Route path="/MainPortfolio" element={<MainPortfolio />} />
+          <Route path="/Promotional" element={<Promotional />} />
         </Routes>
       </Router>
       <Footer />

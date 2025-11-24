@@ -1,0 +1,27 @@
+.portfolio-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 40px;
+  direction: rtl;  
+  text-align: center;
+}
+
+.portfolio-item {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  transition: transform 0.2s ease;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.05);
+}
+
+.portfolio-item img {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 12px;
+}
