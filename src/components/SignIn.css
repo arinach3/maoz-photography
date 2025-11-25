@@ -1,0 +1,23 @@
+.sign-in-container{
+    width: 40%;
+    background-color: #363c47;
+    padding: 40px;
+    border-radius: 20px;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+
+.form-input{
+    background-color: #282c34;
+    border-radius: 20px;
+    padding: 10px;
+    color: white;
+}
+
+.error-message{
+    background-color: white;
+    color: red;
+    padding: 10px;
+    border-radius: 10px;
+}
