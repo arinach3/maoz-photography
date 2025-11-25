@@ -8,23 +8,32 @@ import MainPortfolio from './components/MainPortfolio.jsx';
 import Footer from "./components/Footer.jsx";
 import Promotional from './components/Promotional.jsx';
 import Contact from './components/Contact.jsx';
+import FamilyPhotos from './components/FamilyPhotos.jsx';
+import Events from './components/Events.jsx';
 <html lang="he" dir="rtl"></html>
 
 
 function App() {
   return (
     <div dir="rtl">
-      <Router>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/About" element={<About />} />
-          <Route path="/MainPortfolio" element={<MainPortfolio />} />
-          <Route path="/Promotional" element={<Promotional />} />
-          <Route path="/ContactUs" element={<Contact />} />
-        </Routes>
-      </Router>
-      <Footer />
+      
+        <Router>
+          <NavBar />
+          <main class="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/About" element={<About />} />
+            <Route path="/MainPortfolio" element={<MainPortfolio />} />
+            <Route path="/Promotional" element={<Promotional />} />
+            <Route path="/ContactUs" element={<Contact />} />
+            <Route path="/Events" element={<Events />} />
+            <Route path="/FamilyPhotos" element={<FamilyPhotos />} />
+          </Routes>
+          </main>
+          <Footer />
+        </Router>
+      
+      
     </div>
   );
 }

@@ -3,24 +3,20 @@ import { useState, useEffect, useCallback } from "react";
 import "./Gallery.css";
 
 const images = [
-    "/images/food2.jpg",
-    "/images/food3.jpeg",
-    "/images/food4.jpg",
-    "/images/food5.jpeg",
-    "/images/macaron.jpeg",
-    "/images/promo1.jpg",
-    "/images/promo2.jpg",  
-    "/images/promo3.jpg",
-    "/images/promo4.jpg",
-    "/images/promo5.jpg",
-    "/images/promo6.jpg",
-    "/images/promo7.jpg",
-    "/images/promo8.jpg",
-    "/images/promo9.jpg",
-    "/images/promo10.jpg",
+    "/images/events1.jpg",
+    "/images/events2.jpg",
+    "/images/events3.jpg",
+    "/images/events4.jpg",
+    "/images/events5.jpg",
+    "/images/events6.jpg",
+    "/images/events7.jpg",
+    "/images/events8.jpg",
+    "/images/events9.jpg",
+    "/images/events11.jpg",
+
 ]
 
-export default function Promotional(){
+export default function Events(){
     const [isOpen, setIsOpen] = useState(false);
     const [current, setCurrent] = useState(0);
     const total = images.length;
@@ -58,7 +54,7 @@ export default function Promotional(){
     return(
         <div>
             <div class="promotional-gallery">
-                <h1>צילומי תדמית</h1>
+                <h1>הופעות ואירועי תרבות</h1>
                 <div className="gallery-grid">
                     {images.map((src, index) => (
                     <button

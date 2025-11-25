@@ -3,24 +3,18 @@ import { useState, useEffect, useCallback } from "react";
 import "./Gallery.css";
 
 const images = [
-    "/images/food2.jpg",
-    "/images/food3.jpeg",
-    "/images/food4.jpg",
-    "/images/food5.jpeg",
-    "/images/macaron.jpeg",
-    "/images/promo1.jpg",
-    "/images/promo2.jpg",  
-    "/images/promo3.jpg",
-    "/images/promo4.jpg",
-    "/images/promo5.jpg",
-    "/images/promo6.jpg",
-    "/images/promo7.jpg",
-    "/images/promo8.jpg",
-    "/images/promo9.jpg",
-    "/images/promo10.jpg",
+    "/images/family1.jpg",
+    "/images/family2.jpg",
+    "/images/family3.jpg",
+    "/images/family4.jpg",
+    "/images/family6.jpg",
+    "/images/bar-mitzva1.jpg",
+    "/images/bar-mitzva2.jpg",
+    "/images/bar-mitzva3.jpg",
+
 ]
 
-export default function Promotional(){
+export default function FamilyPhotos(){
     const [isOpen, setIsOpen] = useState(false);
     const [current, setCurrent] = useState(0);
     const total = images.length;
@@ -58,7 +52,7 @@ export default function Promotional(){
     return(
         <div>
             <div class="promotional-gallery">
-                <h1>צילומי תדמית</h1>
+                <h1>צילומי משפחה ואירועים</h1>
                 <div className="gallery-grid">
                     {images.map((src, index) => (
                     <button

@@ -5,9 +5,8 @@
     justify-content: center;
     background-color: #b8e3f5;
     text-align: center;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    position: static;
+
     width: 100%;
     color: #282c34;
     font-weight: bold;

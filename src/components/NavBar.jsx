@@ -12,6 +12,7 @@ export default function NavBar(){
                 <Link to="/About"><button class="nav-link">קצת עלי</button></Link>
                 <Link to="/MainPortfolio"><button class="nav-link">העבודות שלי</button></Link>
                 <Link to="/ContactUs"><button class="nav-link">צור קשר</button></Link>
+                <button class="sign-in-button">Sign In</button>
             </div>
         </nav>
     )

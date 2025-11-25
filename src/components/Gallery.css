@@ -41,7 +41,7 @@
 /* images */
 .thumb-img {
   width: 100%;
-  height: 220px;           /* increase if you want taller thumbnails */
+  height: 320px;           /* increase if you want taller thumbnails */
   object-fit: cover;
   display: block;
   transition: transform .25s ease;
