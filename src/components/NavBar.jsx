@@ -17,7 +17,7 @@ export default function NavBar(){
                 {!user && (<Link to="/SignIn"><button class="nav-link sign-in-button">כניסה</button></Link>)}
                 {user && (<div class="signed-in">
                     
-                    <button onClick={logout} class="nav-link sign-in-button">יציאה</button>
+                    <Link to="/SignIn"><button onClick={logout} class="nav-link sign-in-button">יציאה</button></Link>
                     <span>הי {user.email.split("@")[0]} !😊</span>
                     </div>)}
             </div>
