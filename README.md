@@ -7,6 +7,7 @@ React
 # Third party libraries
 react-router-dom
 firebase
+uuid
 
 # Usage
 In the website the user can view different portfolios and albums and contact the photographer.

@@ -11,6 +11,7 @@ import Contact from './components/Contact.jsx';
 import FamilyPhotos from './components/FamilyPhotos.jsx';
 import Events from './components/Events.jsx';
 import SignIn from './components/SignIn.jsx';
+import ClientGallery from './components/ClientGallery.jsx';
 import { AuthProvider } from "./context/AuthContext";
 <html lang="he" dir="rtl"></html>
 
@@ -32,6 +33,7 @@ function App() {
               <Route path="/Events" element={<Events />} />
               <Route path="/FamilyPhotos" element={<FamilyPhotos />} />
               <Route path="SignIn" element={<SignIn />} />
+              <Route path="/my-gallery" element= {<ClientGallery />} />
             </Routes>
             </main>
             <Footer />

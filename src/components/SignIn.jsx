@@ -16,7 +16,7 @@ export default function SignIn(){
         e.preventDefault();
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            navigate("/MainPortfolio");
+            navigate("/my-gallery");
             
         } catch (err) {
             setError(err.message);
