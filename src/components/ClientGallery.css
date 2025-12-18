@@ -16,3 +16,18 @@
   border-radius: 8px;
   object-fit: cover;
 }
+
+.print-btn {
+  margin-top: 8px;
+  padding: 6px 12px;
+  border: 1px solid #333;
+  background: #b8e3f5;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+.print-btn.selected {
+  background: #4caf50;
+  color: white;
+  border-color: #4caf50;
+}
