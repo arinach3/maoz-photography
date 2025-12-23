@@ -1,5 +1,5 @@
 # About the project
-The app was created for recipes, a place to view fun recipes, mark your favorites and add your own (TBD).
+The webpage was created for the use of a photographer to upload, send and manage clients' photos and for the clients to be able to view and select photos for print
 
 # Built with
 React
