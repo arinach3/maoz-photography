@@ -31,3 +31,21 @@
   color: white;
   border-color: #4caf50;
 }
+
+.print-counter{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #b8e3f5;
+}
+
+.download-btn{
+    margin-top: 8px;
+    margin-right: 8px;
+    padding: 6px 12px;
+    border: 1px solid #333;
+    background: #f5d8b8;
+    cursor: pointer;
+    border-radius: 20px;
+}

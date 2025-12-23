@@ -14,10 +14,9 @@ export default function NavBar(){
                 <Link to="/About"><button class="nav-link">קצת עלי</button></Link>
                 <Link to="/MainPortfolio"><button class="nav-link">העבודות שלי</button></Link>
                 <Link to="/ContactUs"><button class="nav-link">צור קשר</button></Link>
+                {user && (<Link to="/my-gallery"><button className="nav-link">הגלריה שלי</button></Link>)}
                 {!user && (<Link to="/SignIn"><button class="nav-link sign-in-button">כניסה</button></Link>)}
-                {user && (<div class="signed-in">
-                    
-                    <Link to="/SignIn"><button onClick={logout} class="nav-link sign-in-button">יציאה</button></Link>
+                {user && (<div class="signed-in"><Link to="/SignIn"><button onClick={logout} class="nav-link sign-in-button">יציאה</button></Link>
                     
                     </div>)}
             </div>

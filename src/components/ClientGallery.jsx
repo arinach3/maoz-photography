@@ -4,6 +4,7 @@ import { getDownloadURL, ref } from "firebase/storage";
 import { db, storage } from "../firebase"; // makes sure your firebase.js exports db and storage
 import { useAuth } from "../context/AuthContext"; // your auth context
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
+import { Navigate } from "react-router-dom";
 
 import "./ClientGallery.css";
 
@@ -12,6 +13,19 @@ import "./ClientGallery.css";
 export default function ClientGallery() {
   const { user } = useAuth(); // signed-in client
   const [images, setImages] = useState([]);
+  const selectedCount = images.filter(
+      img => img.selectedForPrint
+    ).length;
+
+  const downloadImage = (url, filename) => {
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = filename || "photo.jpg"; // forces download
+      link.target = "_blank"; // ensures it doesn’t override page
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+  };
 
   const togglePrint = async (imageId, isSelected) => {
   try {
@@ -24,7 +38,6 @@ export default function ClientGallery() {
       selectedAt: newValue ? serverTimestamp() : null
     });
 
-    // 🔥 THIS IS WHAT YOU WERE MISSING
     setImages(prevImages =>
       prevImages.map(img =>
         img.id === imageId
@@ -52,7 +65,12 @@ export default function ClientGallery() {
           snap.docs.map(async (doc) => {
             const data = doc.data();
             const url = await getDownloadURL(ref(storage, data.storagePath));
-            return { id: doc.id, url, filename: data.filename };
+            return {
+                id: doc.id,
+                url,
+                filename: data.filename,
+                selectedForPrint: data.selectedForPrint || false
+              };
             
           })
         );
@@ -63,10 +81,14 @@ export default function ClientGallery() {
       }
     }
 
+    
+
     loadImages();
   }, [user]);
 
-  if (!user) return <p>Please sign in to see your gallery.</p>;
+  if (!user) {
+  return <Navigate to="/SignIn" />;
+}
 
   return (
     <div>
@@ -80,9 +102,18 @@ export default function ClientGallery() {
           >
             {img.selectedForPrint ? "✓ נבחר להדפסה" : "בחר להדפסה"}
           </button>
+          <button className="download-btn"
+              onClick={() => downloadImage(img.url, img.filename)}
+            >הורדה ⬇ 
+            </button>
           </div>
         ))}
       </div>
+      {selectedCount > 0 && (
+      <div className="print-counter">
+        נבחרו {selectedCount} תמונות להדפסה
+      </div>
+    )}
     </div>
   );
 }
