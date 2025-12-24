@@ -68,6 +68,7 @@ export default function Events(){
                         alt={`תמונה ${index + 1}`}
                         loading="lazy"
                         className="thumb-img"
+                        
                         />
                     </button>
                     ))}
@@ -116,6 +117,7 @@ function Lightbox({ images, current, setCurrent, onClose, goNext, goPrev }) {
   return (
     <div
       className="lightbox-overlay"
+      data-testid="lightbox"
       onClick={handleBackdropClick}
       role="dialog"
       aria-modal="true"
@@ -139,6 +141,7 @@ function Lightbox({ images, current, setCurrent, onClose, goNext, goPrev }) {
             alt={`תמונה ${current + 1}`}
             className="lb-image"
             draggable="false"
+            data-testid="lightbox-image"
           />
           <div className="lb-counter">
             {current + 1} / {images.length}
