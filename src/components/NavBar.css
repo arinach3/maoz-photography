@@ -4,6 +4,7 @@
     align-items: center;
     flex-wrap: nowrap;
     display: flex;
+    padding: 10px 16px;
 }
  
 Link{
@@ -29,6 +30,7 @@ Link{
     background-color: transparent;
     border: none;
     font-family: 'Assistant', sans-serif;
+    
 
 }
 
