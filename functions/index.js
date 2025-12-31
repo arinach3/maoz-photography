@@ -7,7 +7,7 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-const {setGlobalOptions} = require("firebase-functions");
+// const {setGlobalOptions} = require("firebase-functions");
 
 
 // const {onRequest} = require("firebase-functions/https");
@@ -23,7 +23,7 @@ const {setGlobalOptions} = require("firebase-functions");
 // functions should each use functions.runWith({ maxInstances: 10 }) instead.
 // In the v1 API, each function can only serve one request per container, so
 // this will be the maximum concurrent request count.
-setGlobalOptions({maxInstances: 10});
+// setGlobalOptions({maxInstances: 10});
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -34,56 +34,46 @@ setGlobalOptions({maxInstances: 10});
 // });
 
 
-const functions = require("firebase-functions");
+const { onCall } = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
+
 admin.initializeApp();
 
 const PHOTOGRAPHER_UID = "uNoqkXMfldYO74y1AfBY7M9HxSB3";
 
-exports.createClient = functions.https.onCall(async (data, context) => {
-  // Ensure the user is authenticated
-  if (!context.auth) {
-    throw new functions.https.HttpsError(
-        "unauthenticated",
-        "User must be signed in",
-    );
-  }
+exports.createClient = onCall(
+  { region: "us-central1" },
+  async (request) => {
+    const { auth, data } = request;
 
-  // Only the photographer can create clients
-  if (context.auth.uid !== PHOTOGRAPHER_UID) {
-    throw new functions.https.HttpsError(
-        "permission-denied",
-        "Only the photographer can create clients",
-    );
-  }
+    if (!auth) {
+      throw new Error("User must be signed in");
+    }
 
-  const {email, password, name} = data;
+    if (auth.uid !== PHOTOGRAPHER_UID) {
+      throw new Error("Only the photographer can create clients");
+    }
 
-  if (!email || !password || !name) {
-    throw new functions.https.HttpsError(
-        "invalid-argument",
-        "Missing email, password, or name",
-    );
-  }
+    const { email, password, name } = data;
 
-  try {
+    if (!email || !password || !name) {
+      throw new Error("Missing email, password, or name");
+    }
+
     const userRecord = await admin.auth().createUser({
       email,
       password,
       displayName: name,
     });
 
-    // Optionally, create a Firestore document for this client
     await admin.firestore().collection("clients").doc(userRecord.uid).set({
       name,
       email,
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 
-    return {uid: userRecord.uid};
-  } catch (error) {
-    throw new functions.https.HttpsError("internal", error.message);
+    return { uid: userRecord.uid };
   }
-});
+);
 
 

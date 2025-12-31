@@ -2,7 +2,6 @@ import { useState } from "react";
 import { getFunctions , httpsCallable } from "firebase/functions";
 import { useAuth } from "../context/AuthContext";
 import { app } from "../firebase";
-import { functions } from "../firebase";
 
 
 export default function AddClient() {
@@ -35,6 +34,8 @@ export default function AddClient() {
         try {
             setLoading(true);
             const functions = getFunctions(app, "us-central1");
+            console.log("Current user:", user?.uid);
+            console.log("Token:", await user.getIdToken());
             const createClient = httpsCallable(functions, "createClient");
 
             const result = await createClient({ email, password, name });
