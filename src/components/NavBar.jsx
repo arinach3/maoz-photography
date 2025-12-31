@@ -20,6 +20,7 @@ export default function NavBar(){
                 {user && (<div class="signed-in"><Link to="/SignIn"><button onClick={logout} class="nav-link sign-in-button">יציאה</button></Link>
                 {user?.uid === PHOTOGRAPHER_UID && (<Link to="/Photographer"><button className="nav-link">העלאת תמונות</button></Link>)}    
                 {user?.uid === PHOTOGRAPHER_UID && (<Link to="/Photographer/Galleries"><button className="nav-link">ניהול לקוחות</button></Link>)}   
+                {user?.uid === PHOTOGRAPHER_UID && (<Link to="/Photographer/AddClient"><button className="nav-link">הוספת לקוח</button></Link>)}  
                 </div>)}
             </div>
         </nav>

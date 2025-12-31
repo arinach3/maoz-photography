@@ -7,7 +7,7 @@ import { db, storage } from "../firebase";
 import { PHOTOGRAPHER_UID } from '../auth/authConfig';
 import "./ClientsGalleries.css";
 
-export default function PhotographerDashboard(){
+export default function ClientsGalleries(){
 
     const [clients, setClients] = useState([]);
 

@@ -14,6 +14,7 @@ import SignIn from './components/SignIn.jsx';
 import ClientGallery from './components/ClientGallery.jsx';
 import PhotographerDashboard from './components/PhotographerDashboard.jsx';
 import ClientsGalleries from './components/ClientsGalleries.jsx';
+import AddClient from './components/AddClient.jsx';
 import { AuthProvider } from "./context/AuthContext";
 <html lang="he" dir="rtl"></html>
 
@@ -38,6 +39,7 @@ function App() {
               <Route path="/my-gallery" element= {<ClientGallery />} />
               <Route path="/Photographer" element= {<PhotographerDashboard />} />
               <Route path="/Photographer/Galleries" element= {<ClientsGalleries />} />
+              <Route path="/Photographer/AddClient" element= {<AddClient />} />
             </Routes>
             </main>
             <Footer />

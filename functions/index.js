@@ -8,8 +8,10 @@
  */
 
 const {setGlobalOptions} = require("firebase-functions");
-const {onRequest} = require("firebase-functions/https");
-const logger = require("firebase-functions/logger");
+
+
+// const {onRequest} = require("firebase-functions/https");
+// const logger = require("firebase-functions/logger");
 
 // For cost control, you can set the maximum number of containers that can be
 // running at the same time. This helps mitigate the impact of unexpected
@@ -21,7 +23,7 @@ const logger = require("firebase-functions/logger");
 // functions should each use functions.runWith({ maxInstances: 10 }) instead.
 // In the v1 API, each function can only serve one request per container, so
 // this will be the maximum concurrent request count.
-setGlobalOptions({ maxInstances: 10 });
+setGlobalOptions({maxInstances: 10});
 
 // Create and deploy your first functions
 // https://firebase.google.com/docs/functions/get-started
@@ -30,3 +32,58 @@ setGlobalOptions({ maxInstances: 10 });
 //   logger.info("Hello logs!", {structuredData: true});
 //   response.send("Hello from Firebase!");
 // });
+
+
+const functions = require("firebase-functions");
+const admin = require("firebase-admin");
+admin.initializeApp();
+
+const PHOTOGRAPHER_UID = "uNoqkXMfldYO74y1AfBY7M9HxSB3";
+
+exports.createClient = functions.https.onCall(async (data, context) => {
+  // Ensure the user is authenticated
+  if (!context.auth) {
+    throw new functions.https.HttpsError(
+        "unauthenticated",
+        "User must be signed in",
+    );
+  }
+
+  // Only the photographer can create clients
+  if (context.auth.uid !== PHOTOGRAPHER_UID) {
+    throw new functions.https.HttpsError(
+        "permission-denied",
+        "Only the photographer can create clients",
+    );
+  }
+
+  const {email, password, name} = data;
+
+  if (!email || !password || !name) {
+    throw new functions.https.HttpsError(
+        "invalid-argument",
+        "Missing email, password, or name",
+    );
+  }
+
+  try {
+    const userRecord = await admin.auth().createUser({
+      email,
+      password,
+      displayName: name,
+    });
+
+    // Optionally, create a Firestore document for this client
+    await admin.firestore().collection("clients").doc(userRecord.uid).set({
+      name,
+      email,
+      createdAt: admin.firestore.FieldValue.serverTimestamp(),
+    });
+
+    return {uid: userRecord.uid};
+  } catch (error) {
+    throw new functions.https.HttpsError("internal", error.message);
+  }
+});
+
+
