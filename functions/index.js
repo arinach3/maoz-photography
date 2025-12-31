@@ -34,7 +34,7 @@
 // });
 
 
-const { onCall } = require("firebase-functions/v2/https");
+const { onCall , HttpsError  } = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
 
 admin.initializeApp();
@@ -47,17 +47,17 @@ exports.createClient = onCall(
     const { auth, data } = request;
 
     if (!auth) {
-      throw new Error("User must be signed in");
+      throw new HttpsError("unauthenticated", "User must be signed in");
     }
 
     if (auth.uid !== PHOTOGRAPHER_UID) {
-      throw new Error("Only the photographer can create clients");
+      throw new HttpsError("permission-denied", "Only the photographer can create clients");
     }
 
     const { email, password, name } = data;
 
     if (!email || !password || !name) {
-      throw new Error("Missing email, password, or name");
+      throw new HttpsError("invalid-argument", "Missing email, password, or name");
     }
 
     const userRecord = await admin.auth().createUser({
@@ -69,6 +69,7 @@ exports.createClient = onCall(
     await admin.firestore().collection("clients").doc(userRecord.uid).set({
       name,
       email,
+      role: "client",
       createdAt: admin.firestore.FieldValue.serverTimestamp(),
     });
 
