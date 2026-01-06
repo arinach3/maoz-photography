@@ -47,7 +47,7 @@ export default function Events(){
 
       alert("התמונות הועלו");
       setFiles([]);
-      window.location.reload(); // simplest refresh for now
+      window.location.reload();
     } catch (err) {
       console.error("Upload failed:", err);
     }
@@ -198,7 +198,7 @@ export default function Events(){
 
       {isOpen && (
         <Lightbox
-          images={images.map(img => img.url)} // ⬅️ IMPORTANT
+          images={images.map(img => img.url)}
           current={current}
           setCurrent={setCurrent}
           onClose={close}

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import { getDownloadURL, ref } from "firebase/storage";
-import { db, storage } from "../firebase"; // makes sure your firebase.js exports db and storage
-import { useAuth } from "../context/AuthContext"; // your auth context
+import { db, storage } from "../firebase"; 
+import { useAuth } from "../context/AuthContext"; 
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { Navigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import "./ClientGallery.css";
 
 
 export default function ClientGallery() {
-  const { user } = useAuth(); // signed-in client
+  const { user } = useAuth(); 
   const [images, setImages] = useState([]);
   const selectedCount = images.filter(
       img => img.selectedForPrint
@@ -20,8 +20,8 @@ export default function ClientGallery() {
   const downloadImage = (url, filename) => {
       const link = document.createElement("a");
       link.href = url;
-      link.download = filename || "photo.jpg"; // forces download
-      link.target = "_blank"; // ensures it doesn’t override page
+      link.download = filename || "photo.jpg"; 
+      link.target = "_blank"; 
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
