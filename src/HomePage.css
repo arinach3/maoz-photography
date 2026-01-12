@@ -10,3 +10,9 @@
     width: 60%;
 
 }
+
+@media (max-width: 768px) {
+    .image-carousel{
+        width: 100%;
+    }
+}

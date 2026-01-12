@@ -25,3 +25,10 @@
   object-fit: cover;
   border-radius: 12px;
 }
+
+@media (max-width: 768px) {
+  .portfolio-container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}

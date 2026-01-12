@@ -21,3 +21,10 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+@media (max-width: 768px) {
+    .sign-in-container{
+        width: 80%;
+        padding: 20px;
+    }
+}

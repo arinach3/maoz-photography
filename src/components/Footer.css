@@ -36,3 +36,20 @@
   align-items: center;
   gap: 8px;  /* small gap between icon and text */
 }
+
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    padding:  5px;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .icon {
+    font-size: 24px;  
+  }
+}
